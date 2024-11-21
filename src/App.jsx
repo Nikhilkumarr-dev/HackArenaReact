@@ -1,72 +1,33 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-
-// Components
-import LoanApplication from './components/LoanApplication';
-import AcademicProgress from './components/AcademicProgress';
-import LoanRepayment from './components/LoanRepayment';
-import CertificateManagement from './components/CertificateManagement';
-
+import './App.css'
+import {BrowserRouter,Routes,Route,Link} from "react-router-dom"
 function App() {
-  const [user, setUser] = useState(null);
-
-  const handleLogin = (userData) => {
-    setUser(userData);
-  };
-
-  return (
-    <Router>
-      <div className="App">
-        <header>
-          <nav>
-            <ul>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/loan-application">Loan Application</Link></li>
-              <li><Link to="/academic-progress">Academic Progress</Link></li>
-              <li><Link to="/loan-repayment">Loan Repayment</Link></li>
-              <li><Link to="/certificate-management">Certificate Management</Link></li>
-            </ul>
-          </nav>
-        </header>
-
-        <main>
-          <Switch>
-            <Route path="/loan-application">
-              <LoanApplication user={user} onLogin={handleLogin} />
-            </Route>
-            <Route path="/academic-progress">
-              <AcademicProgress user={user} />
-            </Route>
-            <Route path="/loan-repayment">
-              <LoanRepayment user={user} />
-            </Route>
-            <Route path="/certificate-management">
-              <CertificateManagement user={user} />
-            </Route>
-            <Route exact path="/">
-              <Home />
-            </Route>
-          </Switch>
-        </main>
-
-        <footer>
-          <p>&copy; 2023 Higher Education Financing</p>
-        </footer>
-      </div>
-    </Router>
-  );
+ 
+  //link used to directly fetch without the loader
+  return <div>
+ <BrowserRouter>
+   
+  <Routes>
+    <Route path="/neet/online-coaching-class-11" element={<Class11Program />} />
+    <Route path="/neet/online-coaching-class-12" element={<Class12Program />} />
+    <Route path="/" element={<Landing />}/>
+  </Routes>
+ </BrowserRouter>
+ </div>
 }
-
-function Home() {
-  return (
-    <div>
-      <h1>Welcome to Higher Education Financing</h1>
-      <p>
-        Our platform helps students secure loans for higher education and
-        provides tools to manage their academic progress and loan repayment.
-      </p>
-    </div>
-  );
+function Class11Program(){
+  return <div>
+    NEET Program for the class 11th students
+  </div>
 }
-
-export default App;
+function Class12Program(){
+  return <div>
+    NEET Program for the class 12th students
+  </div>
+}
+function Landing()
+{
+  return <div>
+    welcome to allen
+  </div>
+}
+export default App

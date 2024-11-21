@@ -43,7 +43,7 @@ function App() {
             <Route path="/certificate-management">
               <CertificateManagement user={user} />
             </Route>
-            <Route path="/">
+            <Route exact path="/">
               <Home />
             </Route>
           </Switch>
